@@ -1,0 +1,19 @@
+<nav>
+    <span style="display: flex; justify-content: center; align-items: center;">
+        <img src="../assets/logo/calculer-logo.png" width="55" alt="">
+        <span class="blue-24-600">Calculer</span>
+    </span>
+    <span style="display: flex; justify-content: center;">
+        <button class="tertiary-btn logout-sm-container" pTooltip="Menu" tooltipPosition="left">
+            <i class="pi pi-ellipsis-v"></i>
+        </button>
+    </span>
+</nav>
+<body>
+    <router-outlet></router-outlet>
+</body>
+<footer class="footer deep-black-14-600">
+    <span class="col-lg-4 extra" style="display: flex; justify-content: flex-end;"></span>
+    <span class="col-lg-4 col-sm-6" style="display: flex; justify-content: center; white-space: nowrap; align-items: center;">Powered by&nbsp;<img src="../assets/logo/MS-black.png" style="max-width: 36px" alt=""> </span>
+    <div class="col-lg-4 col-sm-6" style="display: flex; justify-content: flex-end;"><span style="margin-right: 1.25rem;">Version{{versionNo}}</span></div>
+</footer>
