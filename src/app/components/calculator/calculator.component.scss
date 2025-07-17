@@ -4,5 +4,18 @@
     width: -webkit-fill-available;
     align-items: center;
     gap: 0.5rem;
-    background: #fa3399;
+    height: -webkit-fill-available;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    background: #181818;
+    height: 600px;
+    border-radius: 10px;
+    width: 375px;
+}
+
+.calc-screen {
+    
 }
