@@ -1,38 +1,40 @@
 <div class="calculator-container">
     <div class="calculator">
-        <div class="calc-screen"></div>
+        <div class="calc-screen">
+            {{ displayValue }}
+        </div>
         <div class="calc-buttons">
             <div class="calc-btns-row">
-                <button class="lg-operation-normal-btn">AC</button>
-                <button class="lg-operation-normal-btn">&#177;</button>
-                <button class="lg-operation-normal-btn">%</button>
+                <button class="lg-operation-normal-btn" (click)="clear()">AC</button>
+                <button class="lg-operation-normal-btn" (click)="pressOperator('÷')">&#177;</button>
+                <button class="lg-operation-normal-btn" >%</button>
                 <button class="lg-orange-btn">&#xF7;</button>
             </div>
             <div class="calc-btns-row">
-                <button class="lg-normal-btn">7</button>
-                <button class="lg-normal-btn">8</button>
-                <button class="lg-normal-btn">9</button>
-                <button class="lg-orange-btn">X</button>
+                <button class="lg-normal-btn" (click)="press('7')">7</button>
+                <button class="lg-normal-btn" (click)="press('8')">8</button>
+                <button class="lg-normal-btn" (click)="press('9')">9</button>
+                <button class="lg-orange-btn" (click)="pressOperator('X')">X</button>
             </div>
             <div class="calc-btns-row">
-                <button class="lg-normal-btn">4</button>
-                <button class="lg-normal-btn">5</button>
-                <button class="lg-normal-btn">6</button>
-                <button class="lg-orange-btn">-</button>
+                <button class="lg-normal-btn" (click)="press('4')">4</button>
+                <button class="lg-normal-btn" (click)="press('5')">5</button>
+                <button class="lg-normal-btn" (click)="press('6')">6</button>
+                <button class="lg-orange-btn" (click)="pressOperator('-')">-</button>
             </div>
             <div class="calc-btns-row">
-                <button class="lg-normal-btn">1</button>
-                <button class="lg-normal-btn">2</button>
-                <button class="lg-normal-btn">3</button>
-                <button class="lg-orange-btn">+</button>
+                <button class="lg-normal-btn" (click)="press('1')">1</button>
+                <button class="lg-normal-btn" (click)="press('2')">2</button>
+                <button class="lg-normal-btn" (click)="press('3')">3</button>
+                <button class="lg-orange-btn" (click)="pressOperator('+')">+</button>
             </div>
             <div class="calc-btns-row">
                 <button class="lg-normal-btn">
                     <i class="pi pi-calculator"></i>
                 </button>
-                <button class="lg-normal-btn">0</button>
+                <button class="lg-normal-btn" (click)="press('0')">0</button>
                 <button class="lg-normal-btn">.</button>
-                <button class="lg-orange-btn">=</button>
+                <button class="lg-orange-btn" (click)="calculate()">=</button>
             </div>
         </div>
     </div>
