@@ -6,61 +6,58 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent {
-  displayValue = '0';
   currentOperand = '';
   previousOperand = '';
   operation: string | null = null;
 
+  expression = '';
+  result = '';
+  showResult = false;
+
   press(value: string) {
-    if (value === '.' && this.currentOperand.includes('.')) return;
-    this.currentOperand += value;
-    this.displayValue = this.currentOperand;
+   if (this.showResult) {
+      this.expression = '';
+      this.result = '';
+      this.showResult = false;
+    }
+
+    const lastChar = this.expression.slice(-1);
+    if (value === '.' && lastChar === '.') return;
+    this.expression += value;
   }
 
   pressOperator(op: string) {
-    if (this.currentOperand === '') return;
-    if (this.previousOperand !== '') {
-      this.calculate();
+     if (!this.expression || this.isOperator(this.expression.slice(-1))) return;
+
+    if (this.showResult) {
+      this.expression = this.result;
+      this.result = '';
+      this.showResult = false;
     }
-    this.operation = op;
-    this.previousOperand = this.currentOperand;
-    this.currentOperand = '';
+
+    this.expression += ' ' + op + ' ';
+  }
+
+   isOperator(char: string): boolean {
+    return ['+', '-', '*', '/', 'x', '÷'].includes(char);
   }
 
    calculate() {
-    const prev = parseFloat(this.previousOperand);
-    const current = parseFloat(this.currentOperand);
-    if (isNaN(prev) || isNaN(current)) return;
-
-    let result: number;
-    switch (this.operation) {
-      case '+':
-        result = prev + current;
-        break;
-      case '-':
-        result = prev - current;
-        break;
-      case 'X':
-        result = prev * current;
-        break;
-      case '÷':
-        result = prev / current;
-        break;
-      default:
-        return;
+    try {
+      const safeExpr = this.expression.replace(/X/g, '*').replace(/÷/g, '/');
+      const evalResult = Function(`return (${safeExpr})`)(); // simple parser for demo
+      this.result = evalResult.toString();
+      this.showResult = true;
+    } catch (err) {
+      this.result = 'Error';
+      this.showResult = true;
     }
-
-    this.displayValue = result.toString();
-    this.currentOperand = this.displayValue;
-    this.operation = null;
-    this.previousOperand = '';
   }
 
   clear() {
-    this.displayValue = '0';
-    this.currentOperand = '';
-    this.previousOperand = '';
-    this.operation = null;
+    this.expression = '';
+    this.result = '';
+    this.showResult = false;
   }
 
 

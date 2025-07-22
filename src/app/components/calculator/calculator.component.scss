@@ -13,9 +13,9 @@
     display: flex;
     flex-direction: column;
     background: #181818;
-    height: 484px;
+    height: 460px;
     border-radius: 10px;
-    width: 350px;
+    width: 300px;
     padding: 0.5rem;
 }
 
@@ -25,9 +25,35 @@
     color: #f2f2f2;
     text-align: -webkit-right;
     display: flex;
+    flex-direction: column;
     justify-content: end;
     padding: 0.75rem 1rem;
     align-items: end;
+}
+
+.expression {
+  font-size: 24px;
+  color: #d4d4d2;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.result {
+  font-size: 36px;
+  color: white;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+  transform: translateY(-10px);
+  font-size: 20px;
+  color: #888;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .calc-buttons {
@@ -44,8 +70,8 @@
 }
 
 .lg-normal-btn {
-    width: 74px;
-    height: 50px;
+    width: 64px;
+    height: 48px;
     background: #5b5b5b;
     border: unset;
     border-radius: 50px;
@@ -55,8 +81,8 @@
 }
 
 .lg-operation-normal-btn {
-    width: 74px;
-    height: 50px;
+    width: 64px;
+    height: 48px;
     background: #a9a9a9;
     border: unset;
     border-radius: 50px;
@@ -66,8 +92,8 @@
 }
 
 .lg-orange-btn {
-    width: 74px;
-    height: 50px;
+    width: 64px;
+    height: 48px;
     background: #f2a224;
     border: unset;
     border-radius: 50px;
